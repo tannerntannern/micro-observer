@@ -121,7 +121,7 @@ proxy.nested.someProp = 'NEW val';
 // {type: 'set-prop', path: 'nested.someProp', property: 'someProp', newValue: 'NEW val', target: {someProp: 'value', objects: [...], ...}}
 
 proxy.nested.objects.push({name: 'Mitch', age: 54});
-// {type: 'function-call', path: 'nested.objects', property: 'objects', arguments: [{name: 'Mitch', age: 54}], target: [{name: 'Bob', age: 45}, ...]}
+// {type: 'function-call', path: 'nested.objects', property: 'objects', function: 'push', arguments: [{name: 'Mitch', age: 54}], target: [{name: 'Bob', age: 45}, ...]}
 
 proxy.nested.nested.prop3 = 3;
 // {type: 'set-prop', path: 'nested.nested.prop3', property: 'prop3', newValue: 3, target: {prop1: 1, prop2: 2}}
