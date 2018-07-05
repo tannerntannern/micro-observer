@@ -39,7 +39,6 @@ export let Observer = (function(){
 			get: function get(target, prop) {
 				// Special properties
 				if (prop === '__target') return target;
-				else if (prop === '__isProxy') return true;
 
 				// Cache target[prop] for performance
 				let value = target[prop];

@@ -38,19 +38,10 @@ Or in JavaScript:
 ```javascript
 let Observer = require('micro-observer').Observer;
 
-let data = {
-	list: [1, 2, 3],
-	nested: {
-		prop: 'value'
-	}
-};
+let data = {/*...*/};
 
 let proxy = Observer.create(data, function(change) {
-	// Simply output the change report
 	console.log(change);
-
-	// Return true to let the proxy know that the change should be accepted for this example
-	// However, we could accept or reject this change depending on the contents of change if we want
 	return true;
 });
 ```
@@ -65,7 +56,6 @@ proxy.list.push(4);
 ```
 
 ## Installation
-In the browser:
 ```html
 <script src="observer.min.js"></script>
 ```
@@ -76,11 +66,36 @@ $ npm install --save micro-observer
 ```
 
 ## API
+The **micro-observer** API is very simple, as only one function is exported:
+
+### Observable.create(data, validator)
+Creates a "nested proxy" to observe the given data.  Every modification that is attempted
+through the proxy is summarized as a **ChangeReport** (explained in greater detail below)
+and passed to the validator to determine if it should be accepted.
+* Parameters
+	* **data** (object) - a nested object that you'd like to observe behind a proxy
+	* **validator** (function) - a function that recieves a single ChangeReport, and returns whether or not the change
+		should be accepted.  Note that if false is returned, the change will silently be ignored.
+
+### ChangeReport
+An object that describes a change made somewhere within the data.  (Note that this is
+merely a TypeScript type definition, so it is not instantiatable.)
+Each one features the following properties:
+* **type** (string) - either "set-prop", "delete-prop", or "function-call"
+* **path** (string) - a "." delimited path relative to the root of the data
+* **property** (string) - the thing being modified; the last item in the path
+* **newValue** (any) - If type is "set-prop", this is the value it is being set to
+* **function** (string) - If type is "function-call", this is the name of the function being called
+* **arguments** (array) - If type is "function-call", this is the array of arguments that were passed
+* **target** (object) - The object within your data to which the change is being directly applied
+* ****
+
+## More Examples
 Coming soon...
 
 ## Contributing
-Contributions are always welcome, just be sure to run `npm run lint` and `npm run test` before
-submitting a pull request.
+Contributions are always welcome!  Just be sure to run `npm run lint` and `npm run test` before submitting a pull
+request.
 
 ## Author
-Tanner Nielsen
+Tanner Nielsen © 2018 
