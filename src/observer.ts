@@ -20,7 +20,7 @@ export type ChangeReport = {
  * Describes the format of a Validator.  Each one must accept a ChangeReport and return whether or not the change should
  * be accepted.
  */
-export type Validator = (change: ChangeReport) => boolean
+export type Validator = (change: ChangeReport) => boolean;
 
 /**
  * Provides simple way to "proxify" nested objects and validate the changes.
@@ -58,7 +58,7 @@ export let Observer = (function(){
 						})){
 							return value.apply(this, args);
 						}
-					}
+					};
 				}
 
 				// Objects
@@ -114,5 +114,5 @@ export let Observer = (function(){
 		create: function create(target, validator: Validator) {
 			return _create(target, validator, '', '');
 		}
-	}
+	};
 })();

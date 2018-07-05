@@ -4,7 +4,8 @@ node_js:
   - "8"
 before_script:
   - npm install
-script: 
+script:
+  - npm run lint
   - npm run test
 cache:
   directories:
