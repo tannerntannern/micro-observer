@@ -11,25 +11,21 @@ The primary goal of this library is to intercept and report the changes that occ
 nested data structure in a clear and concise manner.  In many ways, it is essentially a
 "nested proxy", but the goal is not necessarily to emulate the Proxy API in its entirety.
 
+## Installation
+```
+$ npm install --save micro-observer
+```
+
 ## Example
 Creating a nested proxy in TypeScript:
 ```typescript
 // Importing ChangeReport is optional -- it just allows your IDE to provide useful hints
 import {Observer, ChangeReport} from 'micro-observer';
 
-let data = {
-	list: [1, 2, 3],
-	nested: {
-		prop: 'value'
-	}
-};
+let data = {list: [1, 2, 3], nested: {prop: 'value'}};
 
-let proxy = Observer.create(data, function(change: ChangeReport): boolean {
-	// Simply output the change report
-	console.log(change);	
-
-	// Return true to let the proxy know that the change should be accepted for this example
-	// However, we could accept or reject this change depending on the contents of change if we want
+let proxy = Observer.create(data, change: ChangeReport => {
+	console.log(change);
 	return true;
 });
 ```
@@ -38,7 +34,7 @@ Or in JavaScript:
 ```javascript
 let Observer = require('micro-observer').Observer;
 
-let data = {/*...*/};
+let data = {list: [1, 2, 3], nested: {prop: 'value'}};
 
 let proxy = Observer.create(data, function(change) {
 	console.log(change);
@@ -55,16 +51,6 @@ proxy.list.push(4);
 // {type: 'function-call', path: 'list', property: 'list', function: 'push', arguments: [4], target: [1, 2, 3]}
 ```
 
-## Installation
-```html
-<script src="observer.min.js"></script>
-```
-
-or with npm:
-```
-$ npm install --save micro-observer
-```
-
 ## API
 The **micro-observer** API is very simple, as only one function is exported:
 
@@ -74,7 +60,7 @@ through the proxy is summarized as a **ChangeReport** (explained in greater deta
 and passed to the validator to determine if it should be accepted.
 * Parameters
 	* **data** (object) - a nested object that you'd like to observe behind a proxy
-	* **validator** (function) - a function that recieves a single ChangeReport, and returns whether or not the change
+	* **validator** (function) - a function that receives a single ChangeReport, and returns whether or not the change
 		should be accepted.  Note that if false is returned, the change will silently be ignored.
 
 ### ChangeReport
@@ -91,11 +77,60 @@ Each one features the following properties:
 * ****
 
 ## More Examples
-Coming soon...
+```javascript
+let data = {
+	someProp: 'value',
+	unprotectedProp: 'value',
+	$protectedProp: 'protected value',
+	nested: {
+		someProp: 'value',
+		objects: [
+			{name: 'Bob', age: 40}, {name: 'Mike', age: 28}
+		],
+		nested: {
+			prop1: 1,
+			prop2: 2
+		}
+	}
+};
+
+let proxy = Observer.create(data, function(change){
+	console.log(change);
+
+	// Protect properties that start with '$'
+	if (change.property.startsWith('$')) return false;
+	else return true;
+});
+
+proxy.someProp = 'new val';
+// {type: 'set-prop', path: 'someProp', property: 'someProp', newValue: 'new val', target: {someProp: 'value', unprotectedProp: ...}}
+
+delete proxy.unprotectedProp;
+// {type: 'delete-prop', path: 'unprotectedProp', property: 'unprotectedProp', target: {someProp: 'new val', unprotectedProp: ...}}
+
+console.log(proxy.unprotectedProp);
+// undefined
+
+delete proxy.$protectedProp;
+// {type: 'delete-prop', path: '$unprotectedProp', property: '$unprotectedProp', target: {someProp: 'new val', $protectedProp: ...}}
+
+console.log(proxy.$protectedProp);
+// 'protected value'
+
+proxy.nested.someProp = 'NEW val';
+// {type: 'set-prop', path: 'nested.someProp', property: 'someProp', newValue: 'NEW val', target: {someProp: 'value', objects: [...], ...}}
+
+proxy.nested.objects.push({name: 'Mitch', age: 54});
+// {type: 'function-call', path: 'nested.objects', property: 'objects', arguments: [{name: 'Mitch', age: 54}], target: [{name: 'Bob', age: 45}, ...]}
+
+proxy.nested.nested.prop3 = 3;
+// {type: 'set-prop', path: 'nested.nested.prop3', property: 'prop3', newValue: 3, target: {prop1: 1, prop2: 2}}
+```
 
 ## Contributing
 Contributions are always welcome!  Just be sure to run `npm run lint` and `npm run test` before submitting a pull
 request.
 
 ## Author
-Tanner Nielsen © 2018 
+Tanner Nielsen © 2018
+[http://tannernielsen.com](http://tannernielsen.com)
