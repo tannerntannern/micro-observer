@@ -55,6 +55,15 @@ let proxy = Observer.create(data, function(change) {
 });
 ```
 
+Making changes and viewing the reports
+```javascript
+proxy.nested.prop = 'new value';
+// {type: 'set-prop', path: 'nested.prop', property: 'prop', newValue: 'new value', target: {prop: 'value'}}
+
+proxy.list.push(4);
+// {type: 'function-call', path: 'list', property: 'list', function: 'push', arguments: [4], target: [1, 2, 3]}
+```
+
 ## Installation
 In the browser:
 ```html
@@ -64,15 +73,6 @@ In the browser:
 or with npm:
 ```
 $ npm install --save micro-observer
-```
-
-Making changes and viewing the reports
-```javascript
-proxy.nested.prop = 'new value';
-// {type: 'set-prop', path: 'nested.prop', property: 'prop', newValue: 'new value', target: {prop: 'value'}}
-
-proxy.list.push(4);
-// {type: 'function-call', path: 'list', property: 'list', function: 'push', arguments: [4], target: [1, 2, 3]}
 ```
 
 ## API
