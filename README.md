@@ -24,7 +24,7 @@ import {Observer, ChangeReport} from 'micro-observer';
 
 let data = {list: [1, 2, 3], nested: {prop: 'value'}};
 
-let proxy = Observer.create(data, change: ChangeReport => {
+let proxy = Observer.create(data, (change: ChangeReport) => {
 	console.log(change);
 	return true;
 });
@@ -42,7 +42,7 @@ let proxy = Observer.create(data, function(change) {
 });
 ```
 
-Making changes and viewing the reports
+Making changes and viewing the reports:
 ```javascript
 proxy.nested.prop = 'new value';
 // {type: 'set-prop', path: 'nested.prop', property: 'prop', newValue: 'new value', target: {prop: 'value'}}
