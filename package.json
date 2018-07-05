@@ -4,7 +4,22 @@
   "description": "Utilizes ES6 Proxies to easily observe and validate changes on nested objects.",
   "main": "dist/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "tsc",
+    "watch": "npm run build -- -w",
+    "version": "npm run build",
+    "test": "nyc mocha --recursive -r ts-node/register test/**/*.test.*"
+  },
+  "nyc": {
+    "extension": [
+      ".ts"
+    ],
+    "include": [
+      "./src/**/*.ts"
+    ],
+    "reporter": [
+      "html"
+    ],
+    "all": true
   },
   "author": "Tanner Nielsen",
   "license": "MIT",
