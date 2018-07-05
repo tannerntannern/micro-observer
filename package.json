@@ -2,7 +2,8 @@
   "name": "micro-observer",
   "version": "0.0.1",
   "description": "Utilizes ES6 Proxies to easily observe and validate changes on nested objects.",
-  "main": "dist/index.js",
+  "main": "dist/observer.js",
+  "types": "dist/observer.d.ts",
   "scripts": {
     "build": "tsc",
     "watch": "npm run build -- -w",

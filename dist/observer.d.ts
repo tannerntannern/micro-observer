@@ -20,8 +20,6 @@ export declare type ChangeReport = {
 export declare type Validator = (change: ChangeReport) => boolean;
 /**
  * Provides simple way to "proxify" nested objects and validate the changes.
- *
- * @author Tanner Nielsen
  */
 export declare let Observer: {
     create: (target: any, validator: Validator) => any;

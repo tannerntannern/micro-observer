@@ -2,8 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Provides simple way to "proxify" nested objects and validate the changes.
- *
- * @author Tanner Nielsen
  */
 exports.Observer = (function () {
     function _create(target, validator, path, lastInPath) {

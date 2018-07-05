@@ -24,8 +24,6 @@ export type Validator = (change: ChangeReport) => boolean;
 
 /**
  * Provides simple way to "proxify" nested objects and validate the changes.
- *
- * @author Tanner Nielsen
  */
 export let Observer = (function(){
 	function _create(target, validator: Validator, path: string, lastInPath: string) {
