@@ -1,0 +1,21 @@
+{
+  "name": "micro-observer",
+  "version": "0.0.1",
+  "description": "Utilizes ES6 Proxies to easily observe and validate changes on nested objects.",
+  "main": "dist/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tanner Nielsen",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/chai": "^4.1.4",
+    "@types/mocha": "^5.2.4",
+    "@types/node": "^10.5.1",
+    "chai": "^4.1.2",
+    "mocha": "^5.2.0",
+    "nyc": "^12.0.2",
+    "ts-node": "^7.0.0",
+    "typescript": "^2.9.2"
+  }
+}
