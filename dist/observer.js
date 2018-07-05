@@ -18,6 +18,8 @@ exports.Observer = (function () {
                 // Special properties
                 if (prop === '__target')
                     return target;
+                else if (prop === '__isProxy')
+                    return true;
                 // Cache target[prop] for performance
                 var value = target[prop];
                 // Functions
@@ -35,7 +37,7 @@ exports.Observer = (function () {
                             function: prop,
                             arguments: args
                         })) {
-                            return value.apply(this, args);
+                            return value.apply(this.__target, args);
                         }
                     };
                 }

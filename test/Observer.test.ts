@@ -20,7 +20,8 @@ describe('Observer', function(){
 			}
 		};
 
-		let proxy = Observer.create(data, change => false);
+		let change,
+			proxy = Observer.create(data, c => {change = c; return false});
 
 		it('should handle properties on the base object', function(){
 			expect(proxy.prop1).to.equal(1);
@@ -42,6 +43,13 @@ describe('Observer', function(){
 
 		it('should handle undefined properties', function(){
 			expect(proxy.propertyThatDefinitelyDoesntExist).to.equal(undefined);
+		});
+
+		it('should not report a change for simply getting a property', function(){
+			change = null;
+			let test = proxy.nested.prop1;
+
+			expect(change).to.equal(null);
 		});
 	});
 
@@ -82,7 +90,7 @@ describe('Observer', function(){
 	});
 
 	describe('change reporting functionality', function(){
-		let data = {
+		let data: any = {
 			prop: 'value',
 			array: [1, 2, {
 				prop: 'value'
@@ -188,6 +196,10 @@ describe('Observer', function(){
 			it('should properly report the target for function operations', function(){
 				proxy.array.push(4);
 				expect(change.target).to.equal(data.array);
+			});
+
+			it('should not apply functions to proxies, but rather to their targets', function(){
+				// TODO: figure out how to reliably test this
 			});
 		});
 	});
