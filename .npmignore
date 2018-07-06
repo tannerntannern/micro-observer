@@ -1,7 +1,0 @@
-.eslintrc.yml
-.gitignore
-.travis.yml
-package-lock.json
-tsconfig.json
-test
-src

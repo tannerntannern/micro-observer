@@ -4,6 +4,9 @@
   "description": "Utilizes ES6 Proxies to easily observe and validate changes on nested objects.",
   "main": "dist/observer.js",
   "types": "dist/observer.d.ts",
+  "files": [
+    "./dist/*"
+  ],
   "scripts": {
     "build": "tsc",
     "watch": "npm run build -- -w",
