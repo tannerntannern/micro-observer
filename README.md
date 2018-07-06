@@ -1,4 +1,4 @@
-﻿# 🔎 micro-observer
+# 🔎 micro-observer
 [![Build Status](https://travis-ci.org/tannerntannern/micro-observer.svg?branch=master)](https://travis-ci.org/tannerntannern/micro-observer)
 [![Coverage Status](https://coveralls.io/repos/github/tannerntannern/micro-observer/badge.svg?branch=master)](https://coveralls.io/github/tannerntannern/micro-observer?branch=master)
 [![dependencies Status](https://david-dm.org/tannerntannern/micro-observer/status.svg)](https://david-dm.org/tannerntannern/micro-observer)
