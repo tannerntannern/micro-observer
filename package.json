@@ -5,7 +5,7 @@
   "main": "dist/observer.js",
   "types": "dist/observer.d.ts",
   "files": [
-    "./dist/*"
+    "dist"
   ],
   "scripts": {
     "build": "tsc",
@@ -43,5 +43,9 @@
     "ts-node": "^7.0.0",
     "typescript": "^2.9.2",
     "typescript-eslint-parser": "^16.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tannerntannern/micro-observer.git"
   }
 }
