@@ -198,8 +198,21 @@ describe('Observer', function(){
 				expect(change.target).to.equal(data.array);
 			});
 
-			it('should not apply functions to proxies, but rather to their targets', function(){
-				// TODO: figure out how to reliably test this
+			describe('functions should always be applied to the correct target', function(){
+				let customData = { array: [1, 2, 3] },
+					customProxy = Observer.create(customData, change => true);
+
+				(<any>customData.array).reportContext = function(){ return this };
+
+				it('should work properly for proxy.someThing.func(...args)', function(){
+					let ctx = customProxy.array.reportContext();
+					expect(ctx).to.equal(customProxy.array.__target);
+				});
+
+				it('should work properly for proxy.someThing.func.apply(proxy.someThing.__target, args)', function(){
+					let ctx = customProxy.array.reportContext.apply(customData.array, []);
+					expect(ctx).to.equal(customProxy.array.__target);
+				});
 			});
 		});
 	});

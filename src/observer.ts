@@ -39,6 +39,7 @@ export let Observer = (function(){
 			get: function get(target, prop) {
 				// Special properties
 				if (prop === '__target') return target;
+				if (prop === '__isProxy') return true;
 
 				// Cache target[prop] for performance
 				let value = target[prop];
@@ -54,7 +55,8 @@ export let Observer = (function(){
 							function: prop,
 							arguments: args
 						})){
-							return value.apply(this.__target, args);
+							// If `this` is a proxy, be sure to apply to __target instead
+							return value.apply(this.__isProxy ? this.__target : this, args);
 						}
 					};
 				}
