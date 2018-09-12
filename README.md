@@ -11,6 +11,8 @@ The primary goal of this library is to intercept and report the changes that occ
 nested data structure in a clear and concise manner.  In many ways, it is essentially a
 "nested proxy", but the goal is not necessarily to emulate the Proxy API in its entirety.
 
+**Demo:** [tannernielsen.com/micro-observer-demo.html](http://tannernielsen.com/micro-observer-demo.html)
+
 ## Installation
 ```
 $ npm install --save micro-observer
