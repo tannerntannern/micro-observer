@@ -1,7 +1,7 @@
 language: node_js
 node_js:
-  - "6"
-  - "8"
+  - 'latest'
+
 before_script:
   - npm install
 script:
@@ -10,6 +10,17 @@ script:
 after_success:
   - npm run coverage
   - npm run coveralls
+
 cache:
   directories:
-    - "node_modules"
+    - node_modules
+
+deploy:
+  provider: npm
+  email: tannerntannern@gmail.com
+  api_key:
+    secure: nei+1qL1AkvlG3HDnvHeUG+Bf6f065KWbWJ3orKEG99yeeqlTpsrX6aUN0bfCuJXEcrhrXILxu/VRImUiujqUcTPY3ob3rKiCZnlKUeHoBjekC/qKgRB4s/2DV9OA0Iywkeyf7nqCHl5LjUvBZYVuzPBHV5/UfqN4I/SDHhN1otExRt1OqmJhx36EiM97/L+0o3AJrRebZ6y1h9+eo5MJ+2lWu+q4PjZSyXRltK4NGvtYdJDY+u2lxeq+hiuzIGfrpUizbd2heYEkuAhTIEgR0DmwL2c0ntDfRNJol1zBQW/1gjYW4rz0AKJ9hYOZ7YTTGHDgqtrRVdtDMhS5WujTnvuNlGp6skvR+j9eATV5a7x6S39sw4cydinvFK9g/aaqCCGGutyh8xQ7q977eRXX/YTzC7SPfqIyyG9ZHIRUaQnY1GGL2p3bsr2uizaerxneXWFER0BbFGTJmrzICpoAFFQLWp8nGNNA5/74dp3ndNLQWQNpbmd98Ic8adYj6iZeRdFaZ7y8KzENaBSq+Ku5xbUmBdFkrb5GQqMGYbp6KJbxh5JO1lYlOjScG6XAU2qKs+gaQ1wXOkg94hxBanNM5iEzIg7/wkWvOCS8b3g1EnimhW+/kZwR1fWv23h7Ox26l3Ps9Y/BD1sYvrg/04VLVp0wc+0nGR6hutM0mxFh/o=
+  on:
+    tags: true
+    branch: master
+    repo: tannerntannern/micro-observer
