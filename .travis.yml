@@ -1,7 +1,7 @@
 language: node_js
 node_js:
-  - '8'
   - '6'
+  - '8'
 
 before_script:
   - npm install
@@ -24,4 +24,5 @@ deploy:
   on:
     tags: true
     branch: master
+    node: '8'
     repo: tannerntannern/micro-observer
