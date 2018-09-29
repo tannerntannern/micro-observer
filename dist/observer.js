@@ -1,18 +1,24 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 /**
+ * Simple utility function to add a new property to an existing object path.  Examples:
+ *
+ * - getPath('obj.nested', 'prop') => 'obj.nested.prop'
+ * - getPath('', 'prop') => 'prop'
+ */
+function getPath(path, prop) {
+    if (path.length !== 0)
+        return path + "." + prop;
+    else
+        return prop;
+}
+/**
  * Provides simple way to "proxify" nested objects and validate the changes.
  */
 exports.Observer = (function () {
     function _create(target, validator, path, lastInPath) {
         // Keeps track of the proxies we've already made so that we don't have to recreate any.
         var proxies = {};
-        var getPath = function getPath(path, prop) {
-            if (path.length !== 0)
-                return path + "." + prop;
-            else
-                return prop;
-        };
         var proxyHandler = {
             get: function get(target, prop) {
                 // Special properties
