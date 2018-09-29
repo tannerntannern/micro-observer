@@ -23,17 +23,23 @@ export type ChangeReport = {
 export type Validator = (change: ChangeReport) => boolean;
 
 /**
+ * Simple utility function to add a new property to an existing object path.  Examples:
+ *
+ * - getPath('obj.nested', 'prop') => 'obj.nested.prop'
+ * - getPath('', 'prop') => 'prop'
+ */
+function getPath(path, prop) {
+	if (path.length !== 0) return `${path}.${prop}`;
+	else return prop;
+}
+
+/**
  * Provides simple way to "proxify" nested objects and validate the changes.
  */
 export let Observer = (function(){
 	function _create(target, validator: Validator, path: string, lastInPath: string) {
 		// Keeps track of the proxies we've already made so that we don't have to recreate any.
 		let proxies: {[prop: string]: any} = {};
-
-		let getPath = function getPath(path, prop) {
-			if (path.length !== 0) return `${path}.${prop}`;
-			else return prop;
-		};
 
 		let proxyHandler = {
 			get: function get(target, prop) {
