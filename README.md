@@ -14,9 +14,17 @@ nested data structure in a clear and concise manner.  In many ways, it is essent
 **Demo:** [tannernielsen.com/micro-observer-demo.html](http://tannernielsen.com/micro-observer-demo.html)
 
 ## Installation
+Via npm:
 ```
 $ npm install --save micro-observer
 ```
+
+Via cdn:
+```html
+<script src="https://cdn.jsdelivr.net/npm/micro-observer/dist/observer.js"></script>
+```
+
+You can also change it to `.min.js` for a minified version.
 
 ## Example
 Creating a nested proxy in TypeScript:
