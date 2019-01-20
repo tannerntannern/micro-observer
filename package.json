@@ -8,8 +8,8 @@
     "dist"
   ],
   "scripts": {
-    "build": "tsc",
-    "watch": "npm run build -- -w",
+    "prepend-browser-compatibility-code": "replace-in-file \"Object.defineProperty(exports,\" \"if (typeof exports === \\\"undefined\\\"){var exports = window;} Object.defineProperty(exports,\" dist/observer.js",
+    "build": "tsc && npm run prepend-browser-compatibility-code",
     "lint": "eslint src/**/*.ts",
     "version": "npm run build",
     "test": "nyc mocha --recursive -r ts-node/register test/**/*.test.*",
@@ -40,6 +40,7 @@
     "eslint": "^5.9.0",
     "mocha": "^5.2.0",
     "nyc": "^12.0.2",
+    "replace-in-file": "^3.4.3",
     "ts-node": "^7.0.1",
     "typescript": "^3.2.1",
     "typescript-eslint-parser": "^18.0.0"

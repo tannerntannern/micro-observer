@@ -1,5 +1,5 @@
 "use strict";
-Object.defineProperty(exports, "__esModule", { value: true });
+if (typeof exports === "undefined"){var exports = window;} Object.defineProperty(exports, "__esModule", { value: true });
 /**
  * Simple utility function to add a new property to an existing object path.  Examples:
  *
