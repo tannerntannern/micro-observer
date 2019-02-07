@@ -2,7 +2,7 @@
 [![Build Status](https://travis-ci.org/tannerntannern/micro-observer.svg?branch=master)](https://travis-ci.org/tannerntannern/micro-observer)
 [![Coverage Status](https://coveralls.io/repos/github/tannerntannern/micro-observer/badge.svg?branch=master)](https://coveralls.io/github/tannerntannern/micro-observer?branch=master)
 [![dependencies Status](https://david-dm.org/tannerntannern/micro-observer/status.svg)](https://david-dm.org/tannerntannern/micro-observer)
-[![install size](https://packagephobia.now.sh/badge?p=micro-observer)](https://packagephobia.now.sh/result?p=micro-observer)
+[![install size](https://img.badgesize.io/tannerntannern/micro-observer/master/dist/observer.min.js?label=minified%20size)](https://raw.githubusercontent.com/tannerntannern/micro-observer/master/dist/observer.min.js)
 
 **micro-observer** is a micro-library for TypeScript and/or JavaScript that allows you to
 easily observe and validate changes on nested objects using
