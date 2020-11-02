@@ -12,9 +12,9 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
-      - run: npm ci
-      - run: npm run lint
-      - run: npm run test
+      - run: yarn install
+      - run: yarn lint
+      - run: yarn test
   publish:
     needs: test
     runs-on: ubuntu-latest
@@ -25,8 +25,8 @@ jobs:
         with:
           node-verison: 12.x
           registry-url: 'https://registry.npmjs.org'
-      - run: npm ci
-      - run: npm run build
+      - run: yarn install
+      - run: yarn build
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_API_TOKEN }}

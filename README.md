@@ -18,7 +18,12 @@ nested data structure in a clear and concise manner.  In many ways, it is essent
 ## Installation
 Via npm:
 ```
-$ npm install --save micro-observer
+$ npm install micro-observer
+```
+
+Via yarn:
+```
+$ yarn add micro-observer
 ```
 
 Via cdn:
@@ -140,7 +145,7 @@ proxy.nested.nested.prop3 = 3;
 ```
 
 ## Contributing
-Contributions are always welcome!  Just be sure to run `npm run lint` and `npm run test` before submitting a pull
+Contributions are always welcome!  Just be sure to run `yarn lint` and `yarn test` before submitting a pull
 request.
 
 ## Author
