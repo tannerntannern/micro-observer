@@ -1,6 +1,7 @@
 # 🔎 micro-observer
-[![Build Status](https://travis-ci.org/tannerntannern/micro-observer.svg?branch=master)](https://travis-ci.org/tannerntannern/micro-observer)
-[![Coverage Status](https://coveralls.io/repos/github/tannerntannern/micro-observer/badge.svg?branch=master)](https://coveralls.io/github/tannerntannern/micro-observer?branch=master)
+[build-badge]: https://img.shields.io/github/workflow/status/tannerntannern/micro-observer/micro-observer%20CI
+[build-link]: https://github.com/tannerntannern/micro-observer/actions
+[![github actions][build-badge]][build-link]
 [![dependencies Status](https://david-dm.org/tannerntannern/micro-observer/status.svg)](https://david-dm.org/tannerntannern/micro-observer)
 [![install size](https://img.badgesize.io/tannerntannern/micro-observer/master/dist/observer.min.js?label=minified%20size)](https://raw.githubusercontent.com/tannerntannern/micro-observer/master/dist/observer.min.js)
 
@@ -143,6 +144,6 @@ Contributions are always welcome!  Just be sure to run `npm run lint` and `npm r
 request.
 
 ## Author
-Tanner Nielsen © 2018
+Tanner Nielsen © 2020
 
 [http://tannernielsen.com](http://tannernielsen.com)

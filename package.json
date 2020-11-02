@@ -12,10 +12,7 @@
     "minify": "npx google-closure-compiler --js=dist/observer.js --js_output_file=dist/observer.min.js",
     "build": "tsc && npm run prepend-browser-compatibility-code && npm run minify",
     "lint": "eslint src/**/*.ts",
-    "version": "npm run build",
-    "test": "nyc mocha --recursive -r ts-node/register test/**/*.test.*",
-    "coverage": "nyc report",
-    "coveralls": "cat ./coverage/lcov.info | coveralls"
+    "test": "nyc mocha --recursive -r ts-node/register test/**/*.test.*"
   },
   "nyc": {
     "extension": [
